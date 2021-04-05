@@ -14,6 +14,8 @@ import '../ui/screens/forgot_password/forgot_password_view.dart';
 import '../ui/screens/home/home_view.dart';
 import '../ui/screens/login/login_view.dart';
 import '../ui/screens/register/register_view.dart';
+import '../ui/screens/verify_email/verify_email_view.dart';
+import '../ui/screens/verify_phone/verify_phone_view.dart';
 
 class Routes {
   static const String demoScreenView = '/';
@@ -21,12 +23,16 @@ class Routes {
   static const String loginScreenView = '/login-screen-view';
   static const String registerScreenView = '/register-screen-view';
   static const String forgotPasswordScreenView = '/forgot-password-screen-view';
+  static const String verifyPhoneScreenView = '/verify-phone-screen-view';
+  static const String verifyEmailScreenView = '/verify-email-screen-view';
   static const all = <String>{
     demoScreenView,
     homeScreenView,
     loginScreenView,
     registerScreenView,
     forgotPasswordScreenView,
+    verifyPhoneScreenView,
+    verifyEmailScreenView,
   };
 }
 
@@ -39,6 +45,8 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.loginScreenView, page: LoginScreenView),
     RouteDef(Routes.registerScreenView, page: RegisterScreenView),
     RouteDef(Routes.forgotPasswordScreenView, page: ForgotPasswordScreenView),
+    RouteDef(Routes.verifyPhoneScreenView, page: VerifyPhoneScreenView),
+    RouteDef(Routes.verifyEmailScreenView, page: VerifyEmailScreenView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -70,6 +78,18 @@ class StackedRouter extends RouterBase {
     ForgotPasswordScreenView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const ForgotPasswordScreenView(),
+        settings: data,
+      );
+    },
+    VerifyPhoneScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const VerifyPhoneScreenView(),
+        settings: data,
+      );
+    },
+    VerifyEmailScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const VerifyEmailScreenView(),
         settings: data,
       );
     },

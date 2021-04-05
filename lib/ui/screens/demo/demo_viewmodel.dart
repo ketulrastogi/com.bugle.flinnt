@@ -18,6 +18,14 @@ class DemoScreenViewModel extends BaseViewModel {
     _navigationService.navigateTo(Routes.forgotPasswordScreenView);
   }
 
+  navigateToVerifyEmailScreen() {
+    _navigationService.navigateTo(Routes.verifyEmailScreenView);
+  }
+
+  navigateToVerifyPhoneScreen() {
+    _navigationService.navigateTo(Routes.verifyPhoneScreenView);
+  }
+
   navigateToHomeScreen() {
     _navigationService.navigateTo(Routes.homeScreenView);
   }

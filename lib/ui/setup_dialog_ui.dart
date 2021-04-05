@@ -1,6 +1,6 @@
 import 'package:flinnt/app/app.locator.dart';
 import 'package:flinnt/enums/dialog_type.dart';
-import 'package:flinnt/global/constants.dart';
+import 'package:flinnt/global/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 

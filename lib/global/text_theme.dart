@@ -1,4 +1,4 @@
-import 'package:flinnt/global/constants.dart';
+import 'package:flinnt/global/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

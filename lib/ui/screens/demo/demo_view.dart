@@ -39,6 +39,22 @@ class DemoScreenView extends StatelessWidget {
                   height: 16.0,
                 ),
                 ElevatedButton(
+                  child: Text('Verify Email'),
+                  style: ButtonStyle(),
+                  onPressed: () => model.navigateToVerifyEmailScreen(),
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                ElevatedButton(
+                  child: Text('Verify Phone'),
+                  style: ButtonStyle(),
+                  onPressed: () => model.navigateToVerifyPhoneScreen(),
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                ElevatedButton(
                   child: Text('Go to Home'),
                   style: ButtonStyle(),
                   onPressed: () => model.navigateToHomeScreen(),

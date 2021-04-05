@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
-import 'package:flinnt/global/constants.dart';
+import 'package:flinnt/global/app_colors.dart';
 import 'package:flinnt/ui/screens/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:flinnt/global/constants.dart';
+import 'package:flinnt/global/app_colors.dart';
 import 'package:flinnt/ui/screens/forgot_password/forgot_password_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

@@ -10,6 +10,9 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
+import '';
+import '../services/auth.dart';
+
 final locator = StackedLocator.instance;
 
 void setupLocator() {
@@ -18,4 +21,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => SnackbarService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => ThemeService.getInstance());
+  locator.registerLazySingleton(() => AuthService());
 }
