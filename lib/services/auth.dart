@@ -34,7 +34,7 @@ class AuthService {
     var response = await http.post(
       Uri.parse('$API_BASE_URL/$AUTO_LOGIN'),
       body: {
-        'userid': userId,
+        'user_id': userId,
       },
     );
     ResponseData _responseData =
@@ -81,6 +81,7 @@ class AuthService {
     String userId,
     String verificationCode,
   ) async {
+    print('UserId: $userId, VerificationId: $verificationCode');
     var response = await http.post(
       Uri.parse('$API_BASE_URL/$ACCOUNT_VERIFY_MOBILE'),
       body: {

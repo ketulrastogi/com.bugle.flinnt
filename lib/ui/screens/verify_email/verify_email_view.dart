@@ -9,6 +9,7 @@ class VerifyEmailScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<VerifyEmailScreenViewModel>.reactive(
+      onModelReady: (model) async => await model.setUserLogin(),
       builder: (context, model, child) {
         return Scaffold(
           backgroundColor: Colors.blueGrey.shade50,
@@ -37,7 +38,7 @@ class VerifyEmailScreenView extends StatelessWidget {
                     children: [
                       Text('We have sent a verification link on email:'),
                       Text(
-                        'ketul@bugletech.com',
+                        '${model.userLogin}',
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ],
@@ -53,13 +54,32 @@ class VerifyEmailScreenView extends StatelessWidget {
                 SizedBox(
                   height: 16.0,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 32.0),
-                  child: Text(
-                    'Did not recieve Email? Try Again.',
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
-                          color: Theme.of(context).primaryColor,
+                InkWell(
+                  onTap: () async => await model.resendVerificationEmail(),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 32.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Did not recieve Email? Try Again.',
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
+                                color: Theme.of(context).primaryColor,
+                              ),
                         ),
+                        SizedBox(
+                          width: 8.0,
+                        ),
+                        (model.busy('ResendEmail'))
+                            ? Container(
+                                height: 20.0,
+                                width: 20.0,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3.0,
+                                ),
+                              )
+                            : SizedBox(),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -68,11 +88,23 @@ class VerifyEmailScreenView extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 32.0),
                   child: ElevatedButton(
-                    child: Text('I\'VE ALREADY VERIFIED'),
+                    child: (model.busy('VerifyStatus'))
+                        ? Container(
+                            height: 20.0,
+                            width: 20.0,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3.0,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
+                          )
+                        : Text('I\'VE ALREADY VERIFIED'),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 16),
                     ),
-                    onPressed: () async {},
+                    onPressed: () async {
+                      await model.verifyAccountStatus();
+                    },
                   ),
                 ),
                 SizedBox(
@@ -102,11 +134,21 @@ class VerifyEmailScreenView extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 32.0),
                   child: ElevatedButton(
-                    child: Text('LOGOUT'),
+                    child: (model.busy('Logout'))
+                        ? Container(
+                            height: 20.0,
+                            width: 20.0,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3.0,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
+                          )
+                        : Text('LOGOUT'),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 16),
                     ),
-                    onPressed: () async {},
+                    onPressed: () async => await model.logout(),
                   ),
                 ),
                 SizedBox(

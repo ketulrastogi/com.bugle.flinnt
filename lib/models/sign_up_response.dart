@@ -12,10 +12,12 @@ class SignUpResponse {
   });
 
   factory SignUpResponse.fromJson(Map<String, dynamic> data) {
+    print(
+        'TypeOf - userId:${data['user_id'].runtimeType}, userLogin:${data['user_login'].runtimeType}, userAccountVerified:${data['user_acc_verified'].runtimeType}, userAccountAuthMode:${data['user_acc_auth_mode'].runtimeType},');
     return SignUpResponse(
-      userId: data['user_id'],
+      userId: data['user_id'].toString(),
       userLogin: data['user_login'],
-      userAccountVerified: data['user_acc_verified'],
+      userAccountVerified: data['user_acc_verified'].toString(),
       userAccountAuthMode: data['user_acc_auth_mode'],
     );
   }

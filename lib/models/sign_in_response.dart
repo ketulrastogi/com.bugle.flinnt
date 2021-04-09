@@ -36,6 +36,8 @@ class SignInResponse {
   });
 
   factory SignInResponse.fromJson(Map<String, dynamic> data) {
+    print(
+        'TypeOf - userId:${data['user_id'].runtimeType}, userLogin:${data['user_login'].runtimeType}, userAccountVerified:${data['user_acc_verified'].runtimeType}, userAccountAuthMode:${data['user_acc_auth_mode'].runtimeType},');
     return SignInResponse(
       userId: data['user_id'],
       userLogin: data['user_login'],
@@ -43,7 +45,7 @@ class SignInResponse {
       lastName: data['lastname'],
       userIsActive: data['user_is_active'],
       userPicture: data['user_picture'],
-      userAccountVerified: data['user_acc_verified'],
+      userAccountVerified: data['user_acc_verified'].toString(),
       userAccountAuthMode: data['user_acc_auth_mode'],
       canAdd: data['can_add'],
       userAccountClosed: data['user_acc_closed'],

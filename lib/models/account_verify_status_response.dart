@@ -7,7 +7,7 @@ class AccountVerifyStatusResponse {
 
   factory AccountVerifyStatusResponse.fromJson(Map<String, dynamic> data) {
     return AccountVerifyStatusResponse(
-      userAccountVerified: data['user_acc_verified'],
+      userAccountVerified: data['user_acc_verified'].toString(),
     );
   }
 

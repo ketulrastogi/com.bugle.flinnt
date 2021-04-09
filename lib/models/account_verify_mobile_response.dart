@@ -15,7 +15,7 @@ class AccountVerifyMobileResponse {
     return AccountVerifyMobileResponse(
       userId: data['user_id'],
       userLogin: data['user_login'],
-      userAccountVerified: data['user_acc_verified'],
+      userAccountVerified: data['user_acc_verified'].toString(),
       userAccountAuthMode: data['user_acc_auth_mode'],
     );
   }

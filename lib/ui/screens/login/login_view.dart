@@ -81,10 +81,13 @@ class LoginScreenView extends StatelessWidget {
                   SizedBox(
                     height: 16.0,
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 32.0),
-                    alignment: Alignment.centerRight,
-                    child: Text('Forgot password?'),
+                  InkWell(
+                    onTap: () => model.navigateToForgotPasswordScreen(),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 32.0),
+                      alignment: Alignment.centerRight,
+                      child: Text('Forgot password?'),
+                    ),
                   ),
                   SizedBox(
                     height: 32.0,
@@ -132,7 +135,7 @@ class LoginScreenView extends StatelessWidget {
                         primary: white,
                         elevation: 1.0,
                       ),
-                      onPressed: () => null,
+                      onPressed: () => model.navigateToRegisterScreen(),
                     ),
                   ),
                 ],

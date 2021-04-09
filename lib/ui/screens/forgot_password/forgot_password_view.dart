@@ -13,7 +13,7 @@ class ForgotPasswordScreenView extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.blueGrey.shade50,
           appBar: AppBar(
-            title: Text('Login'),
+            title: Text('Forgot Password'),
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

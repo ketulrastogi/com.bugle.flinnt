@@ -43,7 +43,7 @@ class User {
       lastName: data['lastname'],
       userIsActive: data['user_is_active'],
       userPicture: data['user_picture'],
-      userAccountVerified: data['user_acc_verified'],
+      userAccountVerified: data['user_acc_verified'].toString(),
       userAccountAuthMode: data['user_acc_auth_mode'],
       canAdd: data['can_add'],
       userAccountClosed: data['user_acc_closed'],
