@@ -39,11 +39,10 @@ class LoginScreenViewModel extends BaseViewModel {
       if (_responseData != null && _responseData.status == 1) {
         SignInResponse _signInResponse =
             SignInResponse.fromJson(_responseData.data);
-
+        print('LoginViewModel[42]- UserId: ${_signInResponse.userId}');
         await _localDataService.saveUserId(_signInResponse.userId);
-        await _localDataService.saveUserLogin(_signInResponse.userLogin);
         if (_signInResponse.userAccountVerified == '1') {
-          _navigationService.clearStackAndShow(Routes.homeScreenView);
+          _navigationService.clearStackAndShow(Routes.rootScreenView);
         } else {
           if (isNumber(_username)) {
             _navigationService.clearStackAndShow(Routes.verifyPhoneScreenView);

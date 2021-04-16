@@ -9,6 +9,7 @@ class MainDrawerWidgetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainDrawerWidgetViewModel>.reactive(
+      onModelReady: (model) async => await model.getUserDetails(),
       builder: (context, model, child) {
         return SizedBox(
           width: MediaQuery.of(context).size.width * 0.75, //20.0,
@@ -22,9 +23,10 @@ class MainDrawerWidgetView extends StatelessWidget {
                   color: white,
                 ),
                 arrowColor: white,
-                onDetailsPressed: () {},
-                accountName: Text('accountName'),
-                accountEmail: Text('accountEmail'),
+                onDetailsPressed: () => model.navigateToUserProfileScreen(),
+                accountName: Text(
+                    '${model.firstName ?? 'Guest'} ${model.lastName ?? ''}'),
+                accountEmail: Text('${model.userLogin ?? ''}'),
               ),
               ListTile(
                 title: Text('Logout'),

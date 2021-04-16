@@ -18,27 +18,37 @@ class MyCourseListWidgetViewModel extends BaseViewModel {
   List<Course> get courseList => _courseList;
   String _errorMessage;
 
-  Future<MyCourseListResponse> getMyCourse() async {
+  Future<void> getMyCourse() async {
     setBusy(true);
+    await Future.delayed(Duration(seconds: 2));
     try {
       String userId = await _localDataService.getUserId();
       ResponseData _responseData =
-          await _courseService.getMyCourses(userId, '0', '10', '');
-
+          await _courseService.getMyCourses(userId, '0', '100', '');
+      print("MyCourseListViewModel[28]- Response: ${_responseData.toJson()}");
       if (_responseData != null && _responseData.status == 1) {
         MyCourseListResponse _myCourseListResponse =
             MyCourseListResponse.fromJson(_responseData.data);
-        return _myCourseListResponse;
+        _courseList = _myCourseListResponse.courseList
+            .map((course) => course.copyWith(
+                  picture:
+                      '${_myCourseListResponse.coursePictureUrl}${course.picture}',
+                  userPicture:
+                      '${_myCourseListResponse.userPictureUrl}${course.userPicture}',
+                  courseUserPicture:
+                      '${_myCourseListResponse.courseUserPictureUrl}${course.courseUserPicture}',
+                ))
+            .toList();
+        notifyListeners();
       } else {
-        print("Response: ${_responseData.toJson()}");
+        print("MyCourseListViewModel[44]- Response: ${_responseData.toJson()}");
         _snackbarService.showCustomSnackBar(
           variant: SnackbarType.error,
           message: '${_responseData.message}',
         );
-        return null;
       }
     } catch (e) {
-      print(e.toString());
+      print('MyCourseLIstViewModel[52]- : Error - ${e.toString()}');
       _snackbarService.showCustomSnackBar(
         variant: SnackbarType.error,
         message: '$e',
@@ -46,7 +56,6 @@ class MyCourseListWidgetViewModel extends BaseViewModel {
     } finally {
       setBusy(false);
     }
-    return null;
   }
 
   Future<void> getMyCourseDemo() async {

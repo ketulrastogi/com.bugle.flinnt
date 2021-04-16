@@ -21,10 +21,11 @@ class MyCourseItemWidgetView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<MyCourseItemWidgetViewModel>.reactive(
       builder: (context, model, child) {
+        // print(course.toJson());
         return LayoutBuilder(
           builder: (context, constraints) {
             return InkWell(
-              onTap: () => model.navigateToCourseContentListScreen(),
+              onTap: () => model.navigateToCourseContentListScreen(course),
               child: Card(
                 child: Container(
                   child: Column(
@@ -33,7 +34,7 @@ class MyCourseItemWidgetView extends StatelessWidget {
                         height: constraints.maxHeight * 0.45,
                         width: constraints.maxWidth,
                         child: Image.network(
-                          'https://online.stanford.edu/sites/default/files/styles/figure_default/public/2018-03/education-creating-effective-online-blended-courses_gse-yo.p.e.n.jpg?itok=QUn6gWp5',
+                          '${course.picture}',
                           fit: BoxFit.fill,
                         ),
                         // Image.network('$coursePictureUrl${course.picture}'),

@@ -4,7 +4,7 @@ class MyCourseListResponse {
   final String coursePictureUrl;
   final String userPictureUrl;
   final String courseUserPictureUrl;
-  final String hasMore;
+  final int hasMore;
   final List<Course> courseList;
 
   MyCourseListResponse({
@@ -21,9 +21,8 @@ class MyCourseListResponse {
       userPictureUrl: data['user_picture_url'],
       courseUserPictureUrl: data['course_user_picture_url'],
       hasMore: data['has_more'],
-      courseList: data['courses']
-          .map((Map<String, dynamic> item) => Course.fromJson(item))
-          .toList(),
+      courseList:
+          [...data['courses']].map((item) => Course.fromJson(item)).toList(),
     );
   }
 

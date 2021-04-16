@@ -1,12 +1,17 @@
+import 'package:flinnt/models/course_section.dart';
+import 'package:flinnt/models/course_section_content.dart';
 import 'package:flinnt/ui/widgets/course_chapter_item/course_chapter_item_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class CourseChapterItemWidgetView extends StatelessWidget {
-  const CourseChapterItemWidgetView({Key key}) : super(key: key);
+  final CourseSection courseSection;
+  const CourseChapterItemWidgetView({Key key, this.courseSection})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // print('14 - CourseSection : ${courseSection.toJson()}}');
     return ViewModelBuilder<CourseChapterItemWidgetViewModel>.reactive(
       builder: (context, model, child) {
         return Container(
@@ -18,7 +23,7 @@ class CourseChapterItemWidgetView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
                 ),
-                child: Text('Chalo Itihas Janiye'),
+                child: Text(courseSection.title),
               ),
               Container(
                 child: ListView.separated(
@@ -26,15 +31,17 @@ class CourseChapterItemWidgetView extends StatelessWidget {
                   primary: false,
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 5,
+                  itemCount: courseSection.contents.length,
                   itemBuilder: (context, index) {
+                    CourseSectionContent courseSectionContent =
+                        courseSection.contents[index];
                     return InkWell(
                       onTap: () => model.navigateToCourseContentDetailScreen(),
                       child: Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Prastavana'),
+                            Text(courseSectionContent.title),
                             Row(
                               children: [
                                 Container(

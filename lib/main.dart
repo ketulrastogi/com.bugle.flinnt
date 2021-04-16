@@ -7,7 +7,7 @@ import 'package:flinnt/ui/setup_snackbar_ui.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+// import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 
 void main() {
   setupLocator();
@@ -35,12 +35,12 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    disableScreenShot();
+    // disableScreenShot();
   }
 
-  Future<void> disableScreenShot() async {
-    await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
-  }
+  // Future<void> disableScreenShot() async {
+  //   await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  // }
 
   @override
   Widget build(BuildContext context) {

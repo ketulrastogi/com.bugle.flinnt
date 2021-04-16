@@ -11,7 +11,7 @@ class MyCourseListWidgetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MyCourseListWidgetViewModel>.reactive(
-      onModelReady: (model) async => await model.getMyCourseDemo(),
+      onModelReady: (model) async => await model.getMyCourse(),
       builder: (context, model, child) {
         if (model.isBusy) {
           return Center(

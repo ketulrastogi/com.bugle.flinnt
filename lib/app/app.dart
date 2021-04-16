@@ -9,6 +9,7 @@ import 'package:flinnt/ui/screens/home/home_view.dart';
 import 'package:flinnt/ui/screens/login/login_view.dart';
 import 'package:flinnt/ui/screens/register/register_view.dart';
 import 'package:flinnt/ui/screens/root/root_view.dart';
+import 'package:flinnt/ui/screens/user_profile/user_profile_view.dart';
 import 'package:flinnt/ui/screens/verify_email/verify_email_view.dart';
 import 'package:flinnt/ui/screens/verify_phone/verify_phone_view.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -27,6 +28,7 @@ import 'package:stacked_themes/stacked_themes.dart';
     MaterialRoute(page: VerifyEmailScreenView),
     MaterialRoute(page: CourseContentListScreenView),
     MaterialRoute(page: CourseContentDetailScreenView),
+    MaterialRoute(page: UserProfileScreenView),
   ],
   dependencies: [
     // Lazy singletons

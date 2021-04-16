@@ -1,11 +1,13 @@
 import 'package:flinnt/global/app_colors.dart';
+import 'package:flinnt/models/course.dart';
 import 'package:flinnt/ui/screens/course_content_detail/course_content_detail_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class CourseContentDetailScreenView extends StatelessWidget {
-  const CourseContentDetailScreenView({Key key}) : super(key: key);
+  final Course course;
+  const CourseContentDetailScreenView({Key key, this.course}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class CourseContentDetailScreenView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              'Content Title',
+              course.name,
               overflow: TextOverflow.fade,
             ),
           ),

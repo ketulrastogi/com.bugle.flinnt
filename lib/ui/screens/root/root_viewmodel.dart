@@ -22,6 +22,12 @@ class RootScreenViewModel extends BaseViewModel {
       if (_responseData != null && _responseData.status == 1) {
         AutoLoginResponse _autoLoginResponse =
             AutoLoginResponse.fromJson(_responseData.data);
+
+        await _localDataService.saveUserId(_autoLoginResponse.userId);
+        await _localDataService.saveUserLogin(_autoLoginResponse.userLogin);
+        await _localDataService.saveUserFirstName(_autoLoginResponse.firstName);
+        await _localDataService.saveUserLastName(_autoLoginResponse.lastName);
+
         if (_autoLoginResponse.userAccountVerified == '1') {
           _navigationService.clearStackAndShow(Routes.homeScreenView);
         } else {

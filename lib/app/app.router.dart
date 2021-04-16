@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../models/course.dart';
 import '../ui/screens/course_content_detail/course_content_detail_view.dart';
 import '../ui/screens/course_content_list/course_content_list_view.dart';
 import '../ui/screens/demo/demo_view.dart';
@@ -17,6 +18,7 @@ import '../ui/screens/home/home_view.dart';
 import '../ui/screens/login/login_view.dart';
 import '../ui/screens/register/register_view.dart';
 import '../ui/screens/root/root_view.dart';
+import '../ui/screens/user_profile/user_profile_view.dart';
 import '../ui/screens/verify_email/verify_email_view.dart';
 import '../ui/screens/verify_phone/verify_phone_view.dart';
 
@@ -33,6 +35,7 @@ class Routes {
       '/course-content-list-screen-view';
   static const String courseContentDetailScreenView =
       '/course-content-detail-screen-view';
+  static const String userProfileScreenView = '/user-profile-screen-view';
   static const all = <String>{
     rootScreenView,
     demoScreenView,
@@ -44,6 +47,7 @@ class Routes {
     verifyEmailScreenView,
     courseContentListScreenView,
     courseContentDetailScreenView,
+    userProfileScreenView,
   };
 }
 
@@ -63,6 +67,7 @@ class StackedRouter extends RouterBase {
         page: CourseContentListScreenView),
     RouteDef(Routes.courseContentDetailScreenView,
         page: CourseContentDetailScreenView),
+    RouteDef(Routes.userProfileScreenView, page: UserProfileScreenView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -116,16 +121,52 @@ class StackedRouter extends RouterBase {
       );
     },
     CourseContentListScreenView: (data) {
+      var args = data.getArgs<CourseContentListScreenViewArguments>(
+        orElse: () => CourseContentListScreenViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => CourseContentListScreenView(),
+        builder: (context) => CourseContentListScreenView(
+          key: args.key,
+          course: args.course,
+        ),
         settings: data,
       );
     },
     CourseContentDetailScreenView: (data) {
+      var args = data.getArgs<CourseContentDetailScreenViewArguments>(
+        orElse: () => CourseContentDetailScreenViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const CourseContentDetailScreenView(),
+        builder: (context) => CourseContentDetailScreenView(
+          key: args.key,
+          course: args.course,
+        ),
+        settings: data,
+      );
+    },
+    UserProfileScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const UserProfileScreenView(),
         settings: data,
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// CourseContentListScreenView arguments holder class
+class CourseContentListScreenViewArguments {
+  final Key key;
+  final Course course;
+  CourseContentListScreenViewArguments({this.key, this.course});
+}
+
+/// CourseContentDetailScreenView arguments holder class
+class CourseContentDetailScreenViewArguments {
+  final Key key;
+  final Course course;
+  CourseContentDetailScreenViewArguments({this.key, this.course});
 }

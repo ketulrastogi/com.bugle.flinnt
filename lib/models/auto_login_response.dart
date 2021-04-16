@@ -36,8 +36,6 @@ class AutoLoginResponse {
   });
 
   factory AutoLoginResponse.fromJson(Map<String, dynamic> data) {
-    print(
-        'TypeOf - userId:${data['user_id'].runtimeType}, userLogin:${data['user_login'].runtimeType}, userAccountVerified:${data['user_acc_verified'].runtimeType}, userAccountAuthMode:${data['user_acc_auth_mode'].runtimeType},');
     return AutoLoginResponse(
       userId: data['user_id'],
       userLogin: data['user_login'],

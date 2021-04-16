@@ -7,6 +7,7 @@ import 'package:flinnt/ui/widgets/communication/communication_view.dart';
 import 'package:flinnt/ui/widgets/main_drawer/main_drawer_view.dart';
 import 'package:flinnt/ui/widgets/my_course_list/my_course_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 
 import 'package:stacked/stacked.dart';
 
@@ -37,17 +38,24 @@ class HomeScreenView extends StatelessWidget {
           ),
           drawer: MainDrawerWidgetView(),
           floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.store),
+            child: Icon(
+              Icons.shop,
+            ),
             onPressed: () {},
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: AnimatedBottomNavigationBar(
             icons: [
-              Icons.ac_unit,
-              Icons.android,
-              Icons.access_alarm,
-              Icons.accessibility
+              CommunityMaterialIcons.post_outline,
+              CommunityMaterialIcons.book_open_blank_variant,
+              CommunityMaterialIcons.desktop_mac_dashboard,
+              CommunityMaterialIcons.account,
+
+              // Icons.ac_unit,
+              // Icons.android,
+              // Icons.access_alarm,
+              // Icons.accessibility
             ],
             activeIndex: model.currentIndex,
             gapLocation: GapLocation.center,

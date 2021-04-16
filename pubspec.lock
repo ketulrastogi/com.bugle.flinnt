@@ -162,6 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  community_material_icon:
+    dependency: "direct main"
+    description:
+      name: community_material_icon
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.9.55"
   convert:
     dependency: transitive
     description:
@@ -281,7 +288,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.26.0"
+    version: "4.1.4"
   get_it:
     dependency: transitive
     description:
@@ -394,6 +401,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  observable_ish:
+    dependency: transitive
+    description:
+      name: observable_ish
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.5"
   package_config:
     dependency: transitive
     description:
@@ -512,7 +526,7 @@ packages:
       name: recase
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0-nullsafety.0"
+    version: "3.0.1"
   rxdart:
     dependency: transitive
     description:
@@ -608,14 +622,14 @@ packages:
       name: stacked
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "1.9.8"
   stacked_generator:
     dependency: "direct dev"
     description:
       name: stacked_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.3"
+    version: "0.2.7"
   stacked_hooks:
     dependency: "direct main"
     description:
@@ -629,7 +643,7 @@ packages:
       name: stacked_services
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.3"
+    version: "0.8.3"
   stacked_themes:
     dependency: "direct main"
     description:
