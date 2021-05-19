@@ -10,3 +10,12 @@ const String ACCOUNT_VERIFY_MOBILE = 'account/verify/mobile/';
 const String ACCOUNT_VERIFY_STATUS = 'account/verify/status/';
 const String MY_COURSES = 'course/my/';
 const String COURSE_CONTENTS = 'lms/list/';
+const String JOIN_COURSE = 'course/join/';
+const String INSTITUTE_LIST = 'account/institution/list/';
+const String INSTITUTE_COURSE_LIST = 'account/institution/courses/';
+const String REQUEST_TO_JOIN_INSTITUTE_COURSE =
+    'account/institution/course/request/join/';
+const String COURSE_VIEW_ALSO_JOINED = 'course/view/also/joined/';
+
+const String ACCOUNT_PROFILE_GET = 'account/profile/get/';
+const String ACCOUNT_PROFILE_UPDATE = 'account/profile/update/';

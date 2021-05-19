@@ -13,37 +13,34 @@ class MyCourseListWidgetView extends StatelessWidget {
     return ViewModelBuilder<MyCourseListWidgetViewModel>.reactive(
       onModelReady: (model) async => await model.getMyCourse(),
       builder: (context, model, child) {
-        if (model.isBusy) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-
-        if (model.courseList.length > 0) {
-          return GridView.builder(
-            padding: EdgeInsets.all(16.0),
-            itemCount: 10,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8.0,
-              mainAxisSpacing: 8.0,
-              // childAspectRatio: 0.8,
-            ),
-            itemBuilder: (context, index) {
-              Course course = model.courseList[index];
-              return MyCourseItemWidgetView(
-                course: course,
-                coursePictureUrl: model.courseList[index].picture,
-                userPictureUrl: model.courseList[index].userPicture,
-                courseUserPictureUrl: model.courseList[index].courseUserPicture,
-              );
-            },
-          );
-        } else {
-          return Center(
-            child: Text('No courses found.'),
-          );
-        }
+        return (model.isBusy)
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : (model.courseList.length > 0)
+                ? GridView.builder(
+                    padding: EdgeInsets.all(16.0),
+                    itemCount: model.courseList.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                      childAspectRatio: 0.88,
+                    ),
+                    itemBuilder: (context, index) {
+                      Course course = model.courseList[index];
+                      return MyCourseItemWidgetView(
+                        course: course,
+                        coursePictureUrl: model.courseList[index].picture,
+                        userPictureUrl: model.courseList[index].userPicture,
+                        courseUserPictureUrl:
+                            model.courseList[index].courseUserPicture,
+                      );
+                    },
+                  )
+                : Center(
+                    child: Text('No courses found.'),
+                  );
       },
       viewModelBuilder: () => MyCourseListWidgetViewModel(),
     );

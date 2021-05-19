@@ -20,7 +20,7 @@ class MyCourseListWidgetViewModel extends BaseViewModel {
 
   Future<void> getMyCourse() async {
     setBusy(true);
-    await Future.delayed(Duration(seconds: 2));
+    // await Future.delayed(Duration(seconds: 2));
     try {
       String userId = await _localDataService.getUserId();
       ResponseData _responseData =
@@ -39,6 +39,7 @@ class MyCourseListWidgetViewModel extends BaseViewModel {
                       '${_myCourseListResponse.courseUserPictureUrl}${course.courseUserPicture}',
                 ))
             .toList();
+        setBusy(false);
         notifyListeners();
       } else {
         print("MyCourseListViewModel[44]- Response: ${_responseData.toJson()}");

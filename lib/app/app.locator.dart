@@ -12,7 +12,9 @@ import 'package:stacked_themes/stacked_themes.dart';
 
 import '../services/auth.dart';
 import '../services/course.dart';
+import '../services/institute.dart';
 import '../services/local_data.dart';
+import '../services/user.dart';
 
 final locator = StackedLocator.instance;
 
@@ -25,4 +27,6 @@ void setupLocator() {
   locator.registerLazySingleton(() => AuthService());
   locator.registerLazySingleton(() => LocalDataService());
   locator.registerLazySingleton(() => CourseService());
+  locator.registerLazySingleton(() => UserService());
+  locator.registerLazySingleton(() => InstituteService());
 }

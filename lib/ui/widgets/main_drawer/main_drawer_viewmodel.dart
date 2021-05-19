@@ -36,4 +36,21 @@ class MainDrawerWidgetViewModel extends BaseViewModel {
   navigateToUserProfileScreen() {
     _navigationService.navigateTo(Routes.userProfileScreenView);
   }
+
+  navigateToUserHomeScreen(int index) {
+    _navigationService.navigateTo(
+      Routes.homeScreenView,
+      arguments: HomeScreenViewArguments(
+        index: index,
+      ),
+    );
+  }
+
+  navigateToJoinACourseScreen() {
+    _navigationService.navigateTo(Routes.joinACourseScreenView);
+  }
+
+  navigateToInstituteListScreen() {
+    _navigationService.navigateTo(Routes.instituteListScreenView);
+  }
 }

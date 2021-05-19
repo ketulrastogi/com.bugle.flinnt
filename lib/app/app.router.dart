@@ -10,11 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../models/course.dart';
+import '../models/institute.dart';
 import '../ui/screens/course_content_detail/course_content_detail_view.dart';
 import '../ui/screens/course_content_list/course_content_list_view.dart';
 import '../ui/screens/demo/demo_view.dart';
 import '../ui/screens/forgot_password/forgot_password_view.dart';
 import '../ui/screens/home/home_view.dart';
+import '../ui/screens/institute_course_detail/institute_course_detail_view.dart';
+import '../ui/screens/institute_detail/institute_detail_view.dart';
+import '../ui/screens/institute_list/institute_list_view.dart';
+import '../ui/screens/join_a_course/join_a_course_view.dart';
 import '../ui/screens/login/login_view.dart';
 import '../ui/screens/register/register_view.dart';
 import '../ui/screens/root/root_view.dart';
@@ -36,6 +41,12 @@ class Routes {
   static const String courseContentDetailScreenView =
       '/course-content-detail-screen-view';
   static const String userProfileScreenView = '/user-profile-screen-view';
+  static const String joinACourseScreenView = '/join-acourse-screen-view';
+  static const String instituteListScreenView = '/institute-list-screen-view';
+  static const String instituteDetailScreenView =
+      '/institute-detail-screen-view';
+  static const String instituteCourseDetailScreenView =
+      '/institute-course-detail-screen-view';
   static const all = <String>{
     rootScreenView,
     demoScreenView,
@@ -48,6 +59,10 @@ class Routes {
     courseContentListScreenView,
     courseContentDetailScreenView,
     userProfileScreenView,
+    joinACourseScreenView,
+    instituteListScreenView,
+    instituteDetailScreenView,
+    instituteCourseDetailScreenView,
   };
 }
 
@@ -68,6 +83,11 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.courseContentDetailScreenView,
         page: CourseContentDetailScreenView),
     RouteDef(Routes.userProfileScreenView, page: UserProfileScreenView),
+    RouteDef(Routes.joinACourseScreenView, page: JoinACourseScreenView),
+    RouteDef(Routes.instituteListScreenView, page: InstituteListScreenView),
+    RouteDef(Routes.instituteDetailScreenView, page: InstituteDetailScreenView),
+    RouteDef(Routes.instituteCourseDetailScreenView,
+        page: InstituteCourseDetailScreenView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -85,8 +105,14 @@ class StackedRouter extends RouterBase {
       );
     },
     HomeScreenView: (data) {
+      var args = data.getArgs<HomeScreenViewArguments>(
+        orElse: () => HomeScreenViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const HomeScreenView(),
+        builder: (context) => HomeScreenView(
+          key: args.key,
+          index: args.index,
+        ),
         settings: data,
       );
     },
@@ -145,8 +171,48 @@ class StackedRouter extends RouterBase {
       );
     },
     UserProfileScreenView: (data) {
+      var args = data.getArgs<UserProfileScreenViewArguments>(
+        orElse: () => UserProfileScreenViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const UserProfileScreenView(),
+        builder: (context) => UserProfileScreenView(key: args.key),
+        settings: data,
+      );
+    },
+    JoinACourseScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const JoinACourseScreenView(),
+        settings: data,
+      );
+    },
+    InstituteListScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const InstituteListScreenView(),
+        settings: data,
+      );
+    },
+    InstituteDetailScreenView: (data) {
+      var args = data.getArgs<InstituteDetailScreenViewArguments>(
+        orElse: () => InstituteDetailScreenViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => InstituteDetailScreenView(
+          key: args.key,
+          institute: args.institute,
+        ),
+        settings: data,
+      );
+    },
+    InstituteCourseDetailScreenView: (data) {
+      var args = data.getArgs<InstituteCourseDetailScreenViewArguments>(
+        orElse: () => InstituteCourseDetailScreenViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => InstituteCourseDetailScreenView(
+          key: args.key,
+          institute: args.institute,
+          course: args.course,
+        ),
         settings: data,
       );
     },
@@ -156,6 +222,13 @@ class StackedRouter extends RouterBase {
 /// ************************************************************************
 /// Arguments holder classes
 /// *************************************************************************
+
+/// HomeScreenView arguments holder class
+class HomeScreenViewArguments {
+  final Key key;
+  final int index;
+  HomeScreenViewArguments({this.key, this.index});
+}
 
 /// CourseContentListScreenView arguments holder class
 class CourseContentListScreenViewArguments {
@@ -169,4 +242,26 @@ class CourseContentDetailScreenViewArguments {
   final Key key;
   final Course course;
   CourseContentDetailScreenViewArguments({this.key, this.course});
+}
+
+/// UserProfileScreenView arguments holder class
+class UserProfileScreenViewArguments {
+  final Key key;
+  UserProfileScreenViewArguments({this.key});
+}
+
+/// InstituteDetailScreenView arguments holder class
+class InstituteDetailScreenViewArguments {
+  final Key key;
+  final Institute institute;
+  InstituteDetailScreenViewArguments({this.key, this.institute});
+}
+
+/// InstituteCourseDetailScreenView arguments holder class
+class InstituteCourseDetailScreenViewArguments {
+  final Key key;
+  final Institute institute;
+  final Course course;
+  InstituteCourseDetailScreenViewArguments(
+      {this.key, this.institute, this.course});
 }

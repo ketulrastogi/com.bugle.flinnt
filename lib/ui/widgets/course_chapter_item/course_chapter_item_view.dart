@@ -1,3 +1,4 @@
+import 'package:flinnt/models/course.dart';
 import 'package:flinnt/models/course_section.dart';
 import 'package:flinnt/models/course_section_content.dart';
 import 'package:flinnt/ui/widgets/course_chapter_item/course_chapter_item_viewmodel.dart';
@@ -5,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class CourseChapterItemWidgetView extends StatelessWidget {
+  final Course course;
   final CourseSection courseSection;
-  const CourseChapterItemWidgetView({Key key, this.courseSection})
+  const CourseChapterItemWidgetView({Key key, this.courseSection, this.course})
       : super(key: key);
 
   @override
@@ -36,7 +38,8 @@ class CourseChapterItemWidgetView extends StatelessWidget {
                     CourseSectionContent courseSectionContent =
                         courseSection.contents[index];
                     return InkWell(
-                      onTap: () => model.navigateToCourseContentDetailScreen(),
+                      onTap: () =>
+                          model.navigateToCourseContentDetailScreen(course),
                       child: Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

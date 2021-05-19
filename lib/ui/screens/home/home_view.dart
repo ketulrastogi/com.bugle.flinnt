@@ -12,11 +12,18 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeScreenView extends StatelessWidget {
-  const HomeScreenView({Key key}) : super(key: key);
+  final int index;
+  const HomeScreenView({Key key, this.index}) : super(key: key);
+
+  static final List<Widget> screens = [
+    CommunicationWidgetView(),
+    MyCourseListWidgetView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeScreenViewModel>.reactive(
+      onModelReady: (model) => model.setCurrentIndex(index ?? 0),
       builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(
@@ -59,60 +66,12 @@ class HomeScreenView extends StatelessWidget {
             ],
             activeIndex: model.currentIndex,
             gapLocation: GapLocation.center,
+            activeColor: Theme.of(context).primaryColor,
             notchSmoothness: NotchSmoothness.defaultEdge,
             onTap: (index) => model.setCurrentIndex(index),
 
             //other params
           ),
-          // bottomNavigationBar: Container(
-          //   decoration: BoxDecoration(
-          //     color: white,
-          //     boxShadow: [
-          //       BoxShadow(
-          //         color: bulletGreyColor,
-          //         spreadRadius: 1.0,
-          //         blurRadius: 4.0,
-          //       ),
-          //     ],
-          //   ),
-          //   child: DotNavigationBar(
-          //     currentIndex: model.currentIndex,
-          //     margin: EdgeInsets.zero,
-          //     onTap: (int value) => model.setCurrentIndex(value),
-          //     // dotIndicatorColor: Colors.black,
-          //     items: [
-          //       /// Home
-          //       DotNavigationBarItem(
-          //         icon: Icon(Icons.home),
-          //         // selectedColor: Colors.purple,
-          //       ),
-
-          //       /// Likes
-          //       DotNavigationBarItem(
-          //         icon: Icon(Icons.book),
-          //         // selectedColor: Colors.pink,
-          //       ),
-
-          //       /// Likes
-          //       DotNavigationBarItem(
-          //         icon: Icon(Icons.shopping_basket_rounded),
-          //         // selectedColor: Colors.pink,
-          //       ),
-
-          //       /// Search
-          //       DotNavigationBarItem(
-          //         icon: Icon(Icons.leaderboard_rounded),
-          //         // selectedColor: Colors.orange,
-          //       ),
-
-          //       /// Profile
-          //       DotNavigationBarItem(
-          //         icon: Icon(Icons.person),
-          //         // selectedColor: Colors.teal,
-          //       ),
-          //     ],
-          //   ),
-          // ),
           body: IndexedStack(
             index: model.currentIndex,
             children: [

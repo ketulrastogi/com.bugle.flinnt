@@ -10,7 +10,7 @@ class CourseContentListScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print('CourseContentListView[13] : ${course.toJson()}');
+    print('CourseContentListView[13] : ${course.toJson()}');
     return ViewModelBuilder<CourseContentListScreenViewModel>.reactive(
       onModelReady: (model) async => await model.getCourseContents(course),
       builder: (context, model, child) {
@@ -51,6 +51,7 @@ class CourseContentListScreenView extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 return CourseChapterItemWidgetView(
                                   courseSection: model.sectionList[index],
+                                  course: course,
                                 );
                               },
                             )

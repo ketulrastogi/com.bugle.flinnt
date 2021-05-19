@@ -29,6 +29,53 @@ class MainDrawerWidgetView extends StatelessWidget {
                 accountEmail: Text('${model.userLogin ?? ''}'),
               ),
               ListTile(
+                leading: Icon(Icons.article),
+                title: Text('My Courses'),
+                onTap: () => model.navigateToUserHomeScreen(1),
+              ),
+              ListTile(
+                leading: Icon(Icons.add_to_photos),
+                title: Text('Join a Course'),
+                onTap: () => model.navigateToJoinACourseScreen(),
+              ),
+              ListTile(
+                leading: Icon(Icons.bookmarks),
+                title: Text('My Wishlist'),
+              ),
+              ListTile(
+                leading: Icon(Icons.approval),
+                title: Text('User Requests'),
+              ),
+              ListTile(
+                leading: Icon(Icons.home_work),
+                title: Text('Select Institute'),
+                onTap: () => model.navigateToInstituteListScreen(),
+              ),
+              ListTile(
+                leading: Icon(Icons.star_rate),
+                title: Text('Bookmarks'),
+              ),
+              ListTile(
+                leading: Icon(Icons.notifications),
+                title: Text('Notifications'),
+              ),
+              ListTile(
+                leading: Icon(Icons.warning),
+                title: Text('Alerts'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+              ),
+              ListTile(
+                leading: Icon(Icons.contact_mail),
+                title: Text('Contact Us'),
+              ),
+              ListTile(
+                leading: Icon(Icons.help),
+                title: Text('Help'),
+              ),
+              ListTile(
                 title: Text('Logout'),
                 onTap: () async => await model.logout(),
               ),

@@ -1,17 +1,20 @@
 import 'package:flinnt/global/app_colors.dart';
 import 'package:flinnt/models/course.dart';
-import 'package:flinnt/ui/widgets/my_course_item/my_course_item_viewmodel.dart';
+import 'package:flinnt/models/institute.dart';
+import 'package:flinnt/ui/widgets/institute_course_item/institute_course_item_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class MyCourseItemWidgetView extends StatelessWidget {
+class InstituteCourseItemWidgetView extends StatelessWidget {
   final String coursePictureUrl;
   final String userPictureUrl;
   final String courseUserPictureUrl;
   final Course course;
-  const MyCourseItemWidgetView({
+  final Institute institute;
+  const InstituteCourseItemWidgetView({
     Key key,
     this.course,
+    this.institute,
     this.coursePictureUrl,
     this.userPictureUrl,
     this.courseUserPictureUrl,
@@ -19,20 +22,21 @@ class MyCourseItemWidgetView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<MyCourseItemWidgetViewModel>.reactive(
+    return ViewModelBuilder<InstituteCourseItemWidgetViewModel>.reactive(
       builder: (context, model, child) {
         // print(course.toJson());
         return LayoutBuilder(
           builder: (context, constraints) {
             return InkWell(
               key: Key('$courseUserPictureUrl'),
-              onTap: () => model.navigateToCourseContentListScreen(course),
+              onTap: () => model.navigateToInstituteCourseDetailScreen(
+                  institute, course),
               child: Card(
                 child: Container(
                   child: Column(
                     children: [
                       Container(
-                        height: constraints.maxHeight * 0.45,
+                        height: constraints.maxHeight * 0.55,
                         width: constraints.maxWidth,
                         child: Image.network(
                           'http://via.placeholder.com/200x100',
@@ -46,39 +50,25 @@ class MyCourseItemWidgetView extends StatelessWidget {
                           padding: const EdgeInsets.all(4.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 course.name,
-                                style: Theme.of(context).textTheme.bodyText2,
-                                textAlign: TextAlign.start,
-                              ),
-                              Text(
-                                'by ${course.userSchoolName}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption
-                                    .copyWith(
-                                      color: textDarkGrey,
-                                    ),
+                                style: Theme.of(context).textTheme.subtitle2,
                                 textAlign: TextAlign.start,
                               ),
                               Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Users: ${course.totalUsers}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          .copyWith(
-                                            color: bodyTextDarkColor,
-                                          ),
-                                    ),
-                                    Icon(Icons.more_vert),
-                                  ],
-                                ),
+                                padding: EdgeInsets.all(4.0),
+                                alignment: Alignment.bottomRight,
+                                child: Text(
+                                    course.public == '0' ? 'Private' : 'Public',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2
+                                        .copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Theme.of(context).primaryColor,
+                                        )),
                               ),
                             ],
                           ),
@@ -92,7 +82,7 @@ class MyCourseItemWidgetView extends StatelessWidget {
           },
         );
       },
-      viewModelBuilder: () => MyCourseItemWidgetViewModel(),
+      viewModelBuilder: () => InstituteCourseItemWidgetViewModel(),
     );
   }
 }

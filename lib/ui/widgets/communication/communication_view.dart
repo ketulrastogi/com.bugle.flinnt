@@ -53,7 +53,8 @@ class CommunicationWidgetView extends StatelessWidget {
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(4.0),
                                 child: Image.network(
-                                  url,
+                                  'http://via.placeholder.com/400x200',
+                                  // url,
                                   fit: BoxFit.cover,
                                 )),
                           ),
@@ -109,7 +110,7 @@ class CommunicationWidgetView extends StatelessWidget {
                         Container(
                           height: 128.0,
                           child: Image.network(
-                            'https://img.theweek.in/content/dam/week/news/sci-tech/images/2019/4/22/earth_day.jpg',
+                            'http://via.placeholder.com/400x150',
                             fit: BoxFit.cover,
                           ),
                         ),
