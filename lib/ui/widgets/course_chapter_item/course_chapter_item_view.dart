@@ -37,9 +37,10 @@ class CourseChapterItemWidgetView extends StatelessWidget {
                   itemBuilder: (context, index) {
                     CourseSectionContent courseSectionContent =
                         courseSection.contents[index];
+
                     return InkWell(
-                      onTap: () =>
-                          model.navigateToCourseContentDetailScreen(course),
+                      onTap: () => model.navigateToCourseContentDetailScreen(
+                          course, courseSectionContent),
                       child: Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

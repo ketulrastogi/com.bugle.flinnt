@@ -10,7 +10,6 @@ class CourseContentListScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('CourseContentListView[13] : ${course.toJson()}');
     return ViewModelBuilder<CourseContentListScreenViewModel>.reactive(
       onModelReady: (model) async => await model.getCourseContents(course),
       builder: (context, model, child) {
@@ -37,8 +36,8 @@ class CourseContentListScreenView extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 2.5,
                         width: MediaQuery.of(context).size.width,
                         child: Image.network(
-                          '${course.picture}',
-                          // 'https://online.stanford.edu/sites/default/files/styles/figure_default/public/2018-03/education-creating-effective-online-blended-courses_gse-yo.p.e.n.jpg?itok=QUn6gWp5',
+                          // '${course.picture}',
+                          'http://via.placeholder.com/400x200',
                           fit: BoxFit.cover,
                         ),
                       ),

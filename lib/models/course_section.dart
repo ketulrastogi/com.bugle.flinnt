@@ -18,7 +18,9 @@ class CourseSection {
       type: data['type'],
       id: data['id'],
       title: data['title'],
-      contents: [...data['contents']].map((item) => CourseSectionContent.fromJson(item)).toList(),
+      contents: [...data['contents']]
+          .map((item) => CourseSectionContent.fromJson(item))
+          .toList(),
     );
   }
 

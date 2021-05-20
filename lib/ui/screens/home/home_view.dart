@@ -11,6 +11,8 @@ import 'package:community_material_icon/community_material_icon.dart';
 
 import 'package:stacked/stacked.dart';
 
+import 'package:flinnt/ui/screens/user_profile/user_profile_view.dart';
+
 class HomeScreenView extends StatelessWidget {
   final int index;
   const HomeScreenView({Key key, this.index}) : super(key: key);
@@ -26,23 +28,29 @@ class HomeScreenView extends StatelessWidget {
       onModelReady: (model) => model.setCurrentIndex(index ?? 0),
       builder: (context, model, child) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text('Flinnt'),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.notifications),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.qr_code_scanner),
-                onPressed: () {},
-              ),
-            ],
-          ),
+          appBar: (model.currentIndex == 3)
+              ? PreferredSize(
+                  child: SizedBox(
+                    height: 24.0,
+                  ),
+                  preferredSize: Size.zero)
+              : AppBar(
+                  title: Text('Flinnt'),
+                  actions: [
+                    IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.notifications),
+                      onPressed: () {},
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.qr_code_scanner),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
           drawer: MainDrawerWidgetView(),
           floatingActionButton: FloatingActionButton(
             child: Icon(
@@ -77,6 +85,8 @@ class HomeScreenView extends StatelessWidget {
             children: [
               CommunicationWidgetView(),
               MyCourseListWidgetView(),
+              MyCourseListWidgetView(),
+              UserProfileScreenView(),
             ],
           ),
         );

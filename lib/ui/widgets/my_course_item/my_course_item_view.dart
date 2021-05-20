@@ -51,6 +51,8 @@ class MyCourseItemWidgetView extends StatelessWidget {
                                 course.name,
                                 style: Theme.of(context).textTheme.bodyText2,
                                 textAlign: TextAlign.start,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                               ),
                               Text(
                                 'by ${course.userSchoolName}',

@@ -17,12 +17,12 @@ class CourseSectionContent {
 
   factory CourseSectionContent.fromJson(Map<String, dynamic> data) {
     return CourseSectionContent(
-      type: data['type'],
+      // type: data['type'],
       id: data['id'],
       title: data['title'],
-      viewed: data['viewed'],
-      preview: data['preview'],
-      statistics: data['statistics'],
+      // viewed: data['viewed'],
+      // preview: data['preview'],
+      // statistics: data['statistics'],
     );
   }
 

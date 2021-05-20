@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../models/course.dart';
+import '../models/course_section_content.dart';
 import '../models/institute.dart';
 import '../ui/screens/course_content_detail/course_content_detail_view.dart';
 import '../ui/screens/course_content_list/course_content_list_view.dart';
@@ -166,6 +167,7 @@ class StackedRouter extends RouterBase {
         builder: (context) => CourseContentDetailScreenView(
           key: args.key,
           course: args.course,
+          courseSectionContent: args.courseSectionContent,
         ),
         settings: data,
       );
@@ -241,7 +243,9 @@ class CourseContentListScreenViewArguments {
 class CourseContentDetailScreenViewArguments {
   final Key key;
   final Course course;
-  CourseContentDetailScreenViewArguments({this.key, this.course});
+  final CourseSectionContent courseSectionContent;
+  CourseContentDetailScreenViewArguments(
+      {this.key, this.course, this.courseSectionContent});
 }
 
 /// UserProfileScreenView arguments holder class
