@@ -15,14 +15,14 @@ class CourseContentListScreenViewModel extends BaseViewModel {
   final SnackbarService _snackbarService = locator<SnackbarService>();
   final LocalDataService _localDataService = locator<LocalDataService>();
 
-  int _contentCount = 0;
-  int get contentCount => _contentCount;
-  int _sectionCount = 0;
-  int get sectionCount => _sectionCount;
+  String _contentCount = '0';
+  String get contentCount => _contentCount;
+  String _sectionCount = '0';
+  String get sectionCount => _sectionCount;
   Map<String, dynamic> _service;
   Map<String, dynamic> get service => _service;
-  int _hasMore = 0;
-  int get hasMore => _hasMore;
+  String _hasMore = '0';
+  String get hasMore => _hasMore;
   List<CourseSection> _sectionList = [];
   List<CourseSection> get sectionList => _sectionList;
 

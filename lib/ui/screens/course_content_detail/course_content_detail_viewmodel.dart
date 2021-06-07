@@ -20,15 +20,15 @@ class CourseContentDetailScreenViewModel extends BaseViewModel {
   YoutubePlayerController _controller;
   YoutubePlayerController get controller => _controller;
 
-  int _allowComment;
-  int _approveComment;
+  String _allowComment;
+  String _approveComment;
   String _videoPreviewUrl;
   String _attachmentUrl;
   Map<String, dynamic> _thirdParty;
   CourseContent _content;
 
-  int get allowCommet => _allowComment;
-  int get approveComment => _approveComment;
+  String get allowCommet => _allowComment;
+  String get approveComment => _approveComment;
   String get videoPreviewUrl => _videoPreviewUrl;
   String get attachmentUrl => _attachmentUrl;
   Map<String, dynamic> get thirdParty => _thirdParty;

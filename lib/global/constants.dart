@@ -1,5 +1,5 @@
-// const String API_BASE_URL = 'https://api.flinnt.com/mobile/v2.0/android';
-const String API_BASE_URL = 'https://apidevtest.flinnt.com/mobile/v2.0/android';
+const String API_BASE_URL = 'https://api.flinnt.com/mobile/v2.0/android';
+// const String API_BASE_URL = 'https://apidevtest.flinnt.com/mobile/v2.0/android';
 
 const String SIGN_IN = 'account/login/';
 const String AUTO_LOGIN = 'account/autologin/';

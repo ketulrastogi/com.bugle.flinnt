@@ -1,6 +1,6 @@
 class CourseContentDetailResponse {
-  final int allowComment;
-  final int approveComment;
+  final String allowComment;
+  final String approveComment;
   final String videoPreviewUrl;
   final String attachmentUrl;
   final Map<String, dynamic> thirdParty;
@@ -18,8 +18,8 @@ class CourseContentDetailResponse {
   factory CourseContentDetailResponse.fromJson(Map<String, dynamic> data) {
     print('CourseContentDetailResponseModel[21]- data: $data');
     return CourseContentDetailResponse(
-      allowComment: data['allow_comment'],
-      approveComment: data['approve_comment'],
+      allowComment: data['allow_comment'].toString(),
+      approveComment: data['approve_comment'].toString(),
       thirdParty: data['third_party'],
       videoPreviewUrl: data['video_preview_url'],
       attachmentUrl: data['attachment_url'],
@@ -49,7 +49,7 @@ class CourseContent {
   final String attachmentIsUrl;
   final String attachmentVideoThumb;
   final String attachmentVideoUrlSource;
-  final int attachmentDoEncode;
+  final String attachmentDoEncode;
   final String likeStatus;
   final String courseName;
   final String coursePicture;
@@ -84,7 +84,7 @@ class CourseContent {
       attachmentIsUrl: data['attachment_is_url'],
       attachmentVideoThumb: data['attachment_video_thumb'],
       attachmentVideoUrlSource: data['attachment_video_url_source'],
-      attachmentDoEncode: data['attachment_do_encode'],
+      attachmentDoEncode: data['attachment_do_encode'].toString(),
       likeStatus: data['like_status'],
       courseName: data['course_name'],
       coursePicture: data['course_picture'],
